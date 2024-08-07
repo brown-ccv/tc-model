@@ -8,6 +8,10 @@ version = "0.1.0"
 dependencies = [
     "numpy"
 ]
+classifiers = [
+  "Private :: Do Not Upload",
+]
+readme = "README.md"
 
 [project.optional-dependencies]
 test = ["pytest"]
