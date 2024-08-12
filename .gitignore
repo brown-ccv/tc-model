@@ -3,3 +3,4 @@
 src/tc_model.*/
 **/__pycache__/
 .DS_Store
+input_data.hdf5

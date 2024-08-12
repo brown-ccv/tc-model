@@ -1,11 +1,11 @@
 import numpy as np
-import os
 from pathlib import Path
 
 from tc_model import ddpm_unet
+from tc_model.load_inputs import inputs_generator
 from tc_model.utils.data import normalize_input
 
-project_root = Path(__file__).parents[1]
+project_root = Path(__file__).parents[2]
 
 class DDPMUNet_model:
     
@@ -18,14 +18,13 @@ class DDPMUNet_model:
         "include_temb": False
     }
     
-    model_path = project_root / "tc_model" / "weights.keras" #os.path.join(os.path.curdir, "src/tc_model/weights.keras") #os.path.join(os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__))), "weights.keras")
+    model_path = project_root / "src" / "tc_model" / "weights.keras"
  
     def __init__(self):
         self.model = DDPMUNet_model.load_model()
 
     @staticmethod
     def load_model():
-        #model = keras.saving.load_model(DDPMUNet_model.model_path)
         model = ddpm_unet.build_model(**DDPMUNet_model.MODEL_CONFIG)
         model.load_weights(DDPMUNet_model.model_path)
         return model
@@ -62,3 +61,19 @@ class DDPMUNet_model:
         x = self.preprocess_input(x)
         x = x[np.newaxis, :]
         return self.model(x)[0]
+
+
+def read_data_file(path: Path):
+    return inputs_generator(path)
+
+def run_model(input_data):
+    model = DDPMUNet_model()
+    preduction = model(next(iter(input_data)))
+    return preduction
+
+def make_prediction():
+    input_data = read_data_file(project_root / "input_data.hdf5")
+    prediction = run_model(input_data)
+    return prediction.numpy().tolist()
+
+
