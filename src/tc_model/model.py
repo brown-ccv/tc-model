@@ -18,7 +18,7 @@ class DDPMUNet_model:
         "include_temb": False
     }
     
-    model_path = root / "weights.keras"
+    model_path = root / "data" / "weights.keras"
  
     def __init__(self):
         self.model = DDPMUNet_model.load_model()
@@ -72,7 +72,7 @@ def run_model(input_data):
     return preduction
 
 def make_prediction():
-    input_data = read_data_file(root / "input_data.hdf5")
+    input_data = read_data_file(root / "data" / "input_data.hdf5")
     prediction = run_model(input_data)
     return prediction.numpy().tolist()
 
