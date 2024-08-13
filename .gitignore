@@ -1,4 +1,6 @@
 .venv/
 .pytest_cache/
-test/__pycache__/
 src/tc_model.*/
+**/__pycache__/
+.DS_Store
+input_data.hdf5
