@@ -7,7 +7,7 @@ name = "tc_model"
 version = "0.1.0"
 dependencies = [
     "keras==2.15.0",
-    "tensorflow==2.15.0",
+    "tensorflow",
 ]
 classifiers = [
   "Private :: Do Not Upload",
