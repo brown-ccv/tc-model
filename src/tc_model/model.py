@@ -5,7 +5,7 @@ from tc_model import ddpm_unet
 from tc_model.load_inputs import inputs_generator
 from tc_model.utils.data import normalize_input
 
-project_root = Path(__file__).parents[2]
+root = Path(__file__).parent
 
 class DDPMUNet_model:
     
@@ -18,7 +18,7 @@ class DDPMUNet_model:
         "include_temb": False
     }
     
-    model_path = project_root / "src" / "tc_model" / "weights.keras"
+    model_path = root / "weights.keras"
  
     def __init__(self):
         self.model = DDPMUNet_model.load_model()
@@ -72,7 +72,7 @@ def run_model(input_data):
     return preduction
 
 def make_prediction():
-    input_data = read_data_file(project_root / "src" / "tc_model" / "input_data.hdf5")
+    input_data = read_data_file(root / "input_data.hdf5")
     prediction = run_model(input_data)
     return prediction.numpy().tolist()
 
