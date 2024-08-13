@@ -6,9 +6,8 @@ build-backend = "hatchling.build"
 name = "tc_model"
 version = "0.1.0"
 dependencies = [
-    "keras",
-    "tensorflow",
-    "pathlib",
+    "keras==2.15.0",
+    "tensorflow==2.15.0",
 ]
 classifiers = [
   "Private :: Do Not Upload",
