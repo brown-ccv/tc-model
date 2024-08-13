@@ -72,7 +72,7 @@ def run_model(input_data):
     return preduction
 
 def make_prediction():
-    input_data = read_data_file(project_root / "input_data.hdf5")
+    input_data = read_data_file(project_root / "src" / "tc_model" / "input_data.hdf5")
     prediction = run_model(input_data)
     return prediction.numpy().tolist()
 

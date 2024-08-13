@@ -1,4 +1,5 @@
 .venv/
+.test/
 .pytest_cache/
 src/tc_model.*/
 **/__pycache__/
