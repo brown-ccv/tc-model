@@ -1,14 +1,13 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-build-scripts", "pipx"]
+build-backend = "hatchling.build"
 
 [project]
 name = "tc_model"
 version = "0.1.0"
 dependencies = [
-    "keras",
-    "tensorflow",
-    "pathlib",
+    "keras==2.15.0",
+    "tensorflow==2.15.0",
 ]
 classifiers = [
   "Private :: Do Not Upload",
@@ -17,3 +16,12 @@ readme = "README.md"
 
 [project.optional-dependencies]
 test = ["pytest"]
+
+[[tool.hatch.build.hooks.build-scripts.scripts]]
+out_dir = "src/tc_model/data"
+commands = [
+    "pipx run gdown 1ZmBbE0Hk3K-lhwUpHJw3E0eg2jSg6592"
+]
+artifacts = [
+    "input_data.hdf5",
+]
