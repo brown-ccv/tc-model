@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-build-scripts"]
+requires = ["hatchling", "hatch-build-scripts", "pipx"]
 build-backend = "hatchling.build"
 
 [project]
