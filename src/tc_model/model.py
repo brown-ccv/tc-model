@@ -2,7 +2,7 @@ import numpy as np
 from pathlib import Path
 
 from tc_model import ddpm_unet
-from tc_model.load_inputs import inputs_generator
+from tc_model.load_inputs import load_inputs
 from tc_model.utils.data import normalize_input
 
 root = Path(__file__).parent
@@ -64,11 +64,12 @@ class DDPMUNet_model:
 
 
 def read_data_file(path: Path):
-    return inputs_generator(path)
+    return load_inputs(path)
 
 def run_model(input_data):
     model = DDPMUNet_model()
-    preduction = model(next(iter(input_data)))
+    #preduction = model(next(iter(input_data)))
+    preduction = model(input_data)
     return preduction
 
 def make_prediction():

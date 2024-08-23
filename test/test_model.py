@@ -9,7 +9,7 @@ def test_unet_model():
 
 def test_run_model():
     project_root = Path(__file__).parents[1]
-    tensor = run_model(read_data_file(project_root / "src" / "tc_model" / "input_data.hdf5"))
+    tensor = run_model(read_data_file(project_root / "src" / "tc_model" / "data" / "input_data.hdf5"))
     assert isinstance(tensor, tf.Tensor)
     shape = tensor.shape
     assert isinstance(shape, tf.TensorShape)
