@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-build-scripts", "pipx"]
+requires = ["hatchling", "hatch-build-scripts"]
 build-backend = "hatchling.build"
 
 [project]
@@ -16,12 +16,3 @@ readme = "README.md"
 
 [project.optional-dependencies]
 test = ["pytest"]
-
-[[tool.hatch.build.hooks.build-scripts.scripts]]
-out_dir = "src/tc_model/data"
-commands = [
-    "pipx run gdown 1ZmBbE0Hk3K-lhwUpHJw3E0eg2jSg6592"
-]
-artifacts = [
-    "input_data.hdf5",
-]
