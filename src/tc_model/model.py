@@ -68,7 +68,6 @@ def read_data_file(path: Path):
 
 def run_model(input_data):
     model = DDPMUNet_model()
-    #preduction = model(next(iter(input_data)))
     preduction = model(input_data)
     return preduction
 
