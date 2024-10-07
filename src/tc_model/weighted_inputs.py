@@ -46,7 +46,11 @@ def get_genesis_map_from_weights(weights: list, gcm_maps: list):
 
         genesis_location_matrices[month] = randomized_grid
 
-    return genesis_location_matrices
+    genesis_matrix = np.array(
+        [np.round(genesis_location_matrices[month], 1) for month in monthlist]
+    )
+
+    return genesis_matrix
 
 def load_weighted_inputs(weights: list, data_folder: Path):
     genesis_maps = get_gcm_genesis_maps(data_folder)
