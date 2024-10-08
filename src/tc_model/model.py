@@ -4,6 +4,7 @@ from pathlib import Path
 from tc_model import ddpm_unet
 from tc_model.load_inputs import load_inputs
 from tc_model.utils.data import normalize_input
+from tc_model.weighted_inputs import load_weighted_inputs
 
 root = Path(__file__).parent
 
@@ -62,17 +63,15 @@ class DDPMUNet_model:
         x = x[np.newaxis, :]
         return self.model(x)[0]
 
-
-def read_data_file(path: Path):
-    return load_inputs(path)
-
 def run_model(input_data):
     model = DDPMUNet_model()
     preduction = model(input_data)
     return preduction
 
-def make_prediction():
-    input_data = read_data_file(root / "data" / "input_data.hdf5")
+def make_prediction(weights: list[int]):
+    if (len(weights) != 4 and sum(weights) != 1):
+        raise Exception(f"Invalid weights: {weights}")
+    input_data = load_weighted_inputs(weights, root / "data")
     prediction = run_model(input_data)
     return prediction.numpy().tolist()
 

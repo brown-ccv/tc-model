@@ -4,4 +4,4 @@
 src/tc_model.*/
 **/__pycache__/
 .DS_Store
-src/tc_model/__pycache__/
+src/tc_model/__pycache__/*
