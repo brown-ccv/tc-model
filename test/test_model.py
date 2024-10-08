@@ -4,12 +4,17 @@ from pathlib import Path
 from tc_model.model import DDPMUNet_model, run_model, make_prediction
 from tc_model.weighted_inputs import load_weighted_inputs
 
+project_root = Path(__file__).parents[1]
+
 def test_unet_model():
     model = DDPMUNet_model()
     assert isinstance(model, object)
 
+def test_inputs_load():
+    weights = load_weighted_inputs([1, 0, 0, 0], project_root / "src" / "tc_model" / "data")
+    assert isinstance(weights, np.ndarray)
+
 def test_run_model():
-    project_root = Path(__file__).parents[1]
     tensor = run_model(load_weighted_inputs([1, 0, 0, 0], project_root / "src" / "tc_model" / "data"))
     assert isinstance(tensor, tf.Tensor)
     shape = tensor.shape
